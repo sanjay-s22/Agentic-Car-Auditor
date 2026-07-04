@@ -1,28 +1,43 @@
-from uuid import uuid4
-from graph.workflow import graph
-'''
-initial_state = {
-    'session_id' : str(uuid4()),
-    'raw_input' : '2020 Hyundai i20 Petrol 55k km',
-    'vehicle_data' : {
-        'brand' : 'Hyundai',
-        'model' : 'i20',
-        'year' : 2020,
-        'fuel' : 'petrol',
-        'kms_driven' : 55000
-    },
 
-    'missing_fields' : [],
-    'validation_passed' : False,
-    'status' : 'Processing',
+'''
+from graph.state import AuditState
+
+state: AuditState = {
+    "user_input": "2020 Hyundai i20",
+    "vehicle_data": {},
+    "missing_fields": [],
+    "market_data": {},
+    "risk_data": {},
+    "negotiation_data": {},
+    "decision_data": {},
+    "critic_data": {},
+    "report": {},
+    "confidence": 0,
+    "status": "PROCESSING"
 }
 
-result = graph.invoke(initial_state)
-print(result)'''
+print(state)
+'''
 
-from fastapi import FastAPI
-from routes.audit import router as audit_router
+from graph.nodes.input_node import input_node
 
-app = FastAPI(title = 'Agentic Car Auditor')
-
-app.include_router(audit_router)
+state = {
+    "user_input": """
+    2020 Hyundai i20 Petrol
+    55000 km
+    Second Owner
+    Chennai
+    """,
+    "vehicle_data": {},
+    "missing_fields": [],
+    "market_data": {},
+    "risk_data": {},
+    "negotiation_data": {},
+    "decision_data": {},
+    "critic_data": {},
+    "report": {},
+    "confidence": 0,
+    "status": "PROCESSING"
+}
+result = input_node(state)
+print(result["vehicle_data"])

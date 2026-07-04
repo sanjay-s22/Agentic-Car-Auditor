@@ -1,9 +1,6 @@
-langgraph
-langchain-core
+python-dotenv
+pydantic-settings
+langchain
+langchain-groq
 fastapi
 uvicorn
-python-dotenv
-joblib
-scikit-learn 
-pandas 
-numpy
