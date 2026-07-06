@@ -3,7 +3,7 @@ __pycache__/
 *$py.class
 venv/
 .env
-.vscode/
+.cursor/
 .idea/
 .DS_Store
 Thumbs.db
