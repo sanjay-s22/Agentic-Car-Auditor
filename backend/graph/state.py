@@ -3,6 +3,7 @@ from typing import TypedDict
 
 
 class AuditState(TypedDict):
+    session_id : str 
     user_input : str
     vehicle_data : dict[str, any]
     missing_fields : list[str]
@@ -13,4 +14,6 @@ class AuditState(TypedDict):
     report : dict[str, any]
     cofidence : int 
     status : str 
+    followup_data : dict 
+
     
