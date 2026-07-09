@@ -9,15 +9,15 @@ from graph.nodes.human_input_node import human_input_node
 builder = StateGraph(AuditState)
 builder.add_node('input_node', input_node)
 builder.add_node('validation_node', validation_node)
-builder.add_node('human_input_node', human_input_node)
+#builder.add_node('human_input_node', human_input_node)
 builder.set_entry_point('input_node')
 
 builder.add_edge('input_node', 'validation_node')
 builder.add_conditional_edges('validation_node', validation_router, 
 {
     'validated' : END,
-    'missing_information' : 'human_input_node'
+    'missing_information' : END
 })
-builder.add_edge('human_input_node', 'validation_node')
+#builder.add_edge('human_input_node', 'validation_node')
 
 graph = builder.compile()

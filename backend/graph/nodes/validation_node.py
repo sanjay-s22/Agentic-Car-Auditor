@@ -1,4 +1,5 @@
 from config.constants import (Waiting_for_input, Validated)
+from services.session_service import session_service
 
 def validation_node(state):
     vehicle_data = state['vehicle_data']
@@ -22,6 +23,7 @@ def validation_node(state):
 
     if missing_fields:
         state['status'] = Waiting_for_input
+        session_service.save_state(state['session_id'], state)
     else:
         state['status'] = Validated 
     return state 
