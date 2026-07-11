@@ -12,6 +12,7 @@ class AuditState(TypedDict):
     negotiation_data : dict[str, any]
     decision_data : dict[str, any]
     report : dict[str, any]
+    critic_data : dict 
     cofidence : int 
     status : str 
     followup_data : dict 
