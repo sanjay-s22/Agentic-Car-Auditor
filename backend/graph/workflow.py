@@ -7,6 +7,9 @@ from graph.routers import validation_router
 from graph.nodes.human_input_node import human_input_node
 from graph.nodes.market_node import market_node 
 from graph.nodes.risk_node import risk_node
+from graph.nodes.negotiation_node import negotiation_node 
+from graph.nodes.decision_node import decision_node 
+
 
 builder = StateGraph(AuditState)
 builder.add_node('input_node', input_node)
@@ -14,13 +17,16 @@ builder.add_node('validation_node', validation_node)
 #builder.add_node('human_input_node', human_input_node)
 builder.add_node('market_node', market_node)
 builder.add_node('risk_node', risk_node)
+builder.add_node('negotiation_node', negotiation_node)
+builder.add_node('decision_node', decision_node)
 
 builder.set_entry_point('input_node')
 
-
 builder.add_edge('input_node', 'validation_node')
 builder.add_edge('market_node', 'risk_node')
-builder.add_edge('risk_node', END)
+builder.add_edge('risk_node', 'negotiation_node')
+builder.add_edge('negotiation_node', 'decision_node')
+builder.add_edge('decision_node', END)
 builder.add_conditional_edges('validation_node', validation_router, 
 {
     'validated' : 'market_node',

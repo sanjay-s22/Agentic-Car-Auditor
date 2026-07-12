@@ -1,10 +1,15 @@
 from config.constants import Risk_analyzed
 
 def risk_node(state):
+    vehicle_data = state.get('vehicle_data')
+    if not vehicle_data:
+        raise ValueError('vehicle_data missing from state')
     vehicle_data = state['vehicle_data']
+
     risk_score = 0
     reasons = []
     owner = vehicle_data['owner'].lower()
+    
     if 'second' in owner:
         risk_score += 10
         reasons.append('Multiple ownership history')

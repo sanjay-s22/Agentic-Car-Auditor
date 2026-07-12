@@ -2,6 +2,10 @@ from services.market_service import get_market_data
 from config.constants import Market_analyzed
 
 def market_node(state):
+    vehicle_data = state.get('vehicle_data')
+    if not vehicle_data:
+       raise ValueError('vehicle_data missing from state')
+    
     vehicle_data = state['vehicle_data']
     market_data = get_market_data(
         brand = vehicle_data['brand'],

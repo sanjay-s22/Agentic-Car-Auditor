@@ -9,9 +9,9 @@ initial_state = {
     "session_id": str(uuid.uuid4()),
 
     "user_input": """
-    2020 Hyundai i20 Petrol
-    55000 km
-    second owner
+    2012 Hyundai i20 Petrol
+    140000 km
+    third owner
     Chennai
     """,
 
@@ -37,3 +37,16 @@ result = graph.invoke(initial_state)
 
 print(result)
 
+'''
+from graph.nodes.decision_node import decision_node
+
+test_state = {
+    'risk_data': {
+        'risk_level': 'HIGH'
+    }
+}
+
+result = decision_node(test_state)
+
+print(result)
+'''
