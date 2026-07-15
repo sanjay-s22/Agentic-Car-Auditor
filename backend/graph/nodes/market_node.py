@@ -13,6 +13,8 @@ def market_node(state):
         year = vehicle_data['year'],
         city = vehicle_data['city']
     )
+    print("MARKET DATA")
+    print(market_data)
 
     state['market_data'] = market_data
     state['status'] = Market_analyzed

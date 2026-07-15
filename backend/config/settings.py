@@ -6,7 +6,6 @@ class Settings(BaseSettings):
     DEBUG: bool = True
     model_config = SettingsConfigDict(
         env_file=".env",
-        extra="ignore"
-    )
+        extra="ignore" )
 
 settings = Settings()

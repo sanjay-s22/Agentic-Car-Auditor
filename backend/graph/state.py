@@ -1,7 +1,5 @@
 from typing import TypedDict 
 
-
-
 class AuditState(TypedDict):
     session_id : str 
     user_input : str

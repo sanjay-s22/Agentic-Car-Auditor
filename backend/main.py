@@ -1,52 +1,21 @@
+from fastapi import FastAPI
+from api.routes import router 
 
-import uuid
-from graph.workflow import graph
-from config.constants import Processing
-from services.resume_service import resume_session
-from services.session_service import session_service
+def create_app():
 
-initial_state = {
-    "session_id": str(uuid.uuid4()),
+    app = FastAPI(
+        title="Agentic Car Auditor",
+        description="Multi-Agent Vehicle Evaluation System built with LangGraph",
+        version="1.0.0")
 
-    "user_input": """
-    2012 Hyundai i20 Petrol
-    140000 km
-    third owner
-    Chennai
-    """,
+    @app.get("/")
+    def health_check():
+        return {
+            "service": "Agentic Car Auditor",
+            "status": "running"
+        }
 
-    "vehicle_data": {},
-    "missing_fields": [],
+    app.include_router(router)
+    return app
 
-    "market_data": {},
-    "risk_data": {},
-    "negotiation_data": {},
-    "decision_data": {},
-    "critic_data": {},
-
-    "report": {},
-
-    "confidence": 0,
-
-    "followup_data": {},
-
-    "status": Processing
-}
-
-result = graph.invoke(initial_state)
-
-print(result)
-
-'''
-from graph.nodes.decision_node import decision_node
-
-test_state = {
-    'risk_data': {
-        'risk_level': 'HIGH'
-    }
-}
-
-result = decision_node(test_state)
-
-print(result)
-'''
+app = create_app()
