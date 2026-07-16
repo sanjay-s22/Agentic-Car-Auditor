@@ -1,7 +1,10 @@
 python-dotenv
+pydantic
 pydantic-settings
-langchain
-langchain-groq
 fastapi
 uvicorn
+langchain
+langchain-groq
+langgraph
 ddgs
+requests
