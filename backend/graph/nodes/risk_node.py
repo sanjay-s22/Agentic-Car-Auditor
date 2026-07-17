@@ -8,23 +8,32 @@ def risk_node(state):
 
     risk_score = 0
     reasons = []
-    owner = vehicle_data['owner'].lower()
-    
-    if 'second' in owner:
+    owner = str(vehicle_data.get('owner', '')).lower()
+    km_driven = vehicle_data.get('km_driven', 0)
+    year = vehicle_data.get('year', 2020)
+
+    if 'second' in owner or '2nd' in owner:
         risk_score += 10
         reasons.append('Multiple ownership history')
-    elif 'third' in owner:
+    elif 'third' in owner or '3rd' in owner:
         risk_score += 20
         reasons.append('Multiple ownership history')
-    elif 'fourth' in owner:
+    elif 'fourth' in owner or '4th' in owner:
         risk_score += 30
         reasons.append('Multiple ownership history')
-    if vehicle_data['km_driven'] > 100000:
+    if km_driven > 100000:
         risk_score += 30
         reasons.append('High mileage vehicle')
-    if vehicle_data['year'] < 2015:
+    elif km_driven > 80000:
+        risk_score += 15
+        reasons.append('Moderately high mileage')
+
+    if year < 2015:
         risk_score += 25
         reasons.append('Older vehicle')
+    elif year < 2018:
+        risk_score += 10
+        reasons.append('Aging vehicle')
     if risk_score >= 60:
         risk_level = 'HIGH'
     elif risk_score >= 30:
