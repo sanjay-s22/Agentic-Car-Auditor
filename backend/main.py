@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from api.routes import router 
 
 def create_app():
-
     app = FastAPI(
         title="Agentic Car Auditor",
         description="Multi-Agent Vehicle Evaluation System built with LangGraph",

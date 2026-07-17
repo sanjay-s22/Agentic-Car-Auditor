@@ -1,4 +1,5 @@
 from graph.state import AuditState 
+
 ExtractionPrompt ='''
 you are a vehicle information extraction system.
 Extract vehicle details from the user input.
@@ -9,7 +10,6 @@ Do not include markdown.
 Do not include code blocks.
 
 Extract the following fields:
-
 {{
     'brand' : null,
     'model' : null,

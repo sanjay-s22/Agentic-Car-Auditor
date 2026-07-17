@@ -24,14 +24,12 @@ def critic_node(state):
 
     if (
         risk_level == 'HIGH'
-        and recommendation == 'BUY'
-    ):
+        and recommendation == 'BUY'):
         issues.append('High risk vehicle cannot be recommended as BUY')
 
     if (
         risk_level == 'LOW'
-        and recommendation == 'AVOID'
-    ):
+        and recommendation == 'AVOID'):
         issues.append('Low risk vehicle cannot be recommended as AVOID')
     
     if (

@@ -108,21 +108,26 @@ This means an incomplete input doesn't have to mean starting over.
 
 **State management** — in-memory session storage with pause/resume support
 
-## Project structure
+## Project Structure
 
 ```text
 backend/
 │
 ├── api/
+├── config/
 ├── graph/
 │   ├── nodes/
-│   └── state/
+│   ├── workflow.py
+│   ├── state.py
+│   └── routers.py
 │
-├── services/
+├── prompts/
 ├── schemas/
-├── config/
+├── services/
+│
 ├── main.py
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
 ## Running locally
