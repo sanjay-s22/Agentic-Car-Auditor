@@ -24,20 +24,29 @@ def critic_node(state):
 
     if (
         risk_level == 'HIGH'
-        and recommendation == 'BUY'):
+        and recommendation == 'BUY'
+    ):
         issues.append('High risk vehicle cannot be recommended as BUY')
 
     if (
         risk_level == 'LOW'
-        and recommendation == 'AVOID'):
+        and recommendation == 'AVOID'
+    ):
         issues.append('Low risk vehicle cannot be recommended as AVOID')
-    
-    if (
-    offer_price is None
-    or target_price is None
-    or walk_away_price is None):
-        return state
 
+    if (
+        offer_price is None
+        or target_price is None
+        or walk_away_price is None):
+        
+        state['critic_data'] = {
+            'issues': [
+                'Negotiation skipped due to missing market price'
+            ]
+        }
+
+        state['status'] = Critic_complete
+        return state
 
     if offer_price > target_price:
         issues.append('Offer price exceeds target price')
@@ -45,14 +54,7 @@ def critic_node(state):
     if target_price > walk_away_price:
         issues.append('Target price exceeds walk away price')
 
-    if (
-    offer_price is None
-    or target_price is None
-    or walk_away_price is None):
+    state['critic_data'] = {'issues': issues}
 
-       state["critic_data"] = {
-            "issues": [
-            "Negotiation skipped due to missing market price"]
-    }
-
+    state['status'] = Critic_complete
     return state

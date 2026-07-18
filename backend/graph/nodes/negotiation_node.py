@@ -1,6 +1,5 @@
 from config.constants import Negotiation_complete
 
-
 def negotiation_node(state):
     market_data = state.get("market_data")
 
