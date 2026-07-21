@@ -5,7 +5,7 @@ Agentic Car Auditor is a LangGraph-based multi-agent system that evaluates used 
 
 Rather than returning a single price estimate, the system evaluates market value, identifies risks, generates a negotiation strategy, and produces a final recommendation .
 
-**Demo** :https://agentic-car-auditor.onrender.com
+**Demo** :https://agentic-car-auditor.onrender.com/docs 
 
 ## Features
 
