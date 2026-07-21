@@ -1,11 +1,9 @@
 # Agentic Car Auditor
 
 
-Agentic Car Auditor is a LangGraph-based multi-agent system that evaluates used cars before purchase. Multiple specialized agents collaborate to validate vehicle details, analyze market listings, assess risk, generate a negotiation strategy, and produce a final buy / negotiate / avoid recommendation.
+Agentic Car Auditor is a LangGraph-based multi-agent system that evaluates used cars before purchase. Instead of returning a basic price estimate, specialized agents collaborate to validate vehicle details, pull live market data, score risk, and generate an actionable negotiation strategy.
 
-Rather than returning a single price estimate, the system evaluates market value, identifies risks, generates a negotiation strategy, and produces a final recommendation .
-
-**Demo** :https://agentic-car-auditor.onrender.com/docs 
+**Demo**: https://agentic-car-auditor.onrender.com/docs 
 
 ## Features
 
@@ -56,7 +54,7 @@ Each box is a node in the LangGraph workflow. Human Input only runs when a requi
 
 **Decision Agent** — turns all of that into a final call: Buy, Buy with negotiation, or Avoid.
 
-**Critic Agent** — critic Agent reviews the recommendation before the final report is generated
+**Critic Agent** — reviews the recommendation before the final report is generated
 
 **Report Generator** — combines every agent's output into one structured audit report.
 
